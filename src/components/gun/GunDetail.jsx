@@ -67,6 +67,7 @@ export default function GunDetail({ gun, onBack, onEdit, onDelete }) {
       {/* Hero */}
       <div className="detail-hero">
         <img className="detail-img" src={imgSrc} alt={gun.name} />
+
         <div className="detail-info">
           <h1 className="display">{gun.name}</h1>
           <p className="type">

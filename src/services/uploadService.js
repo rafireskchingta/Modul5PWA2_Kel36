@@ -20,11 +20,13 @@ class UploadService {
     if (!file) {
       throw new Error('No file provided.')
     }
+
     if (!ALLOWED_TYPES.includes(file.type)) {
       throw new Error(
         'Invalid file type. Allowed formats: .jpg, .jpeg, .png, .webp',
       )
     }
+
     if (file.size > MAX_SIZE_BYTES) {
       throw new Error('File size exceeds the 5 MB limit.')
     }
@@ -33,7 +35,7 @@ class UploadService {
     if (IS_SUPABASE) {
       const ext = file.name.split('.').pop() || 'png'
       const fileName = `gun_${Date.now()}_${Math.random().toString(36).substring(2, 7)}.${ext}`
-      const bucketName = 'guns'
+      const bucketName = 'product-images'
 
       try {
         const uploadUrl = `${BASE_URL}/storage/v1/object/${bucketName}/${fileName}`
